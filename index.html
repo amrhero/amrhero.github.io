@@ -1,35 +1,124 @@
-<!doctype html>
-<html lang="ar">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>PS2Eater Mods — الصفحة الرئيسية</title>
-  <meta name="description" content="مجموعتي من مودات WWE وملفات PS2 للتحميل — صور، وصف، وروابط تحميل.">
-  <link rel="icon" href="/favicon.ico">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PS2 Eater | AmrHero</title>
+  <style>
+    :root {
+      --bg: #f9f9f9;
+      --text: #222;
+      --card: #fff;
+      --accent: #ff4040;
+    }
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #f1f1f1;
+      --card: #1e1e1e;
+      --accent: #ff4040;
+    }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+    header {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    button {
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: var(--text);
+      margin-left: 8px;
+    }
+    .container {
+      text-align: center;
+      max-width: 400px;
+      background: var(--card);
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      margin: 0;
+      color: var(--accent);
+    }
+    p {
+      opacity: 0.8;
+      margin-bottom: 25px;
+    }
+    .links a {
+      display: block;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      margin: 8px 0;
+      padding: 12px;
+      border-radius: 10px;
+      transition: 0.2s;
+      font-weight: 500;
+    }
+    .links a:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>PS2Eater Mods</h1>
-    <p>أهلاً — هنا هتلاقي مودات وشخصيات للألعاب.</p>
-    <nav>
-      <a href="/mods/mod1.html">مود 1</a> |
-      <a href="/mods/mod2.html">مود 2</a>
-    </nav>
+    <button id="themeToggle">🌙</button>
+    <button id="langToggle">🌐</button>
   </header>
+  <div class="container">
+    <h1>PS2 Eater / AmrHero</h1>
+    <p id="desc">Official links and community pages</p>
+    <div class="links" id="links">
+      <a href="https://www.youtube.com/c/PS2Eater" target="_blank">🎥 YouTube</a>
+      <a href="https://t.me/ps2eater" target="_blank">📢 Telegram</a>
+      <a href="https://discord.gg/BvmDS3NWrB" target="_blank">💬 Discord</a>
+      <a href="https://www.patreon.com/PS2EATER" target="_blank">💰 Patreon</a>
+      <a href="https://www.facebook.com/PS2EATER" target="_blank">📘 Facebook</a>
+      <a href="https://www.tiktok.com/@ps2eater" target="_blank">🎵 TikTok</a>
+      <a href="https://x.com/amrheroher" target="_blank">🐦 X (Twitter)</a>
+    </div>
+  </div>
 
-  <main>
-    <section>
-      <h2>آخر الإضافات</h2>
-      <article>
-        <h3>مود مثال: Braun Strowman</h3>
-        <p>وصف قصير للمود.</p>
-        <a href="https://drive.google.com/..." target="_blank">تحميل from Drive</a>
-      </article>
-    </section>
-  </main>
+  <script>
+    const themeBtn = document.getElementById('themeToggle');
+    const langBtn = document.getElementById('langToggle');
+    const body = document.body;
+    let lang = 'en';
 
-  <footer>
-    <p>روابط: <a href="https://youtube.com/@PS2Eater">قناتي</a></p>
-  </footer>
+    themeBtn.onclick = () => {
+      const isDark = body.dataset.theme === 'dark';
+      body.dataset.theme = isDark ? 'light' : 'dark';
+      themeBtn.textContent = isDark ? '🌙' : '☀️';
+    };
+
+    langBtn.onclick = () => {
+      const langs = ['en', 'ar', 'es', 'hi'];
+      lang = langs[(langs.indexOf(lang) + 1) % langs.length];
+      setLanguage(lang);
+    };
+
+    function setLanguage(l) {
+      const desc = document.getElementById('desc');
+      if (l === 'ar') desc.textContent = 'الروابط الرسمية وقنوات التواصل';
+      else if (l === 'es') desc.textContent = 'Enlaces oficiales y comunidades';
+      else if (l === 'hi') desc.textContent = 'आधिकारिक लिंक और समुदाय पेज';
+      else desc.textContent = 'Official links and community pages';
+    }
+  </script>
 </body>
 </html>
