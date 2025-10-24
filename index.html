@@ -3,122 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PS2 Eater | AmrHero</title>
-  <style>
-    :root {
-      --bg: #f9f9f9;
-      --text: #222;
-      --card: #fff;
-      --accent: #ff4040;
-    }
-    [data-theme="dark"] {
-      --bg: #121212;
-      --text: #f1f1f1;
-      --card: #1e1e1e;
-      --accent: #ff4040;
-    }
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      transition: background 0.3s, color 0.3s;
-    }
-    header {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-    }
-    button {
-      background: none;
-      border: none;
-      font-size: 1.1rem;
-      cursor: pointer;
-      color: var(--text);
-      margin-left: 8px;
-    }
-    .container {
-      text-align: center;
-      max-width: 400px;
-      background: var(--card);
-      padding: 25px;
-      border-radius: 18px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    h1 {
-      margin: 0;
-      color: var(--accent);
-    }
-    p {
-      opacity: 0.8;
-      margin-bottom: 25px;
-    }
-    .links a {
-      display: block;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      margin: 8px 0;
-      padding: 12px;
-      border-radius: 10px;
-      transition: 0.2s;
-      font-weight: 500;
-    }
-    .links a:hover {
-      transform: translateY(-2px);
-      opacity: 0.9;
-    }
-  </style>
+  <title>PS2 Eater Store</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <button id="themeToggle">🌙</button>
-    <button id="langToggle">🌐</button>
-  </header>
-  <div class="container">
     <h1>PS2 Eater / AmrHero</h1>
-    <p id="desc">Official links and community pages</p>
-    <div class="links" id="links">
-      <a href="https://www.youtube.com/c/PS2Eater" target="_blank">🎥 YouTube</a>
-      <a href="https://t.me/ps2eater" target="_blank">📢 Telegram</a>
-      <a href="https://discord.gg/BvmDS3NWrB" target="_blank">💬 Discord</a>
-      <a href="https://www.patreon.com/PS2EATER" target="_blank">💰 Patreon</a>
-      <a href="https://www.facebook.com/PS2EATER" target="_blank">📘 Facebook</a>
-      <a href="https://www.tiktok.com/@ps2eater" target="_blank">🎵 TikTok</a>
-      <a href="https://x.com/amrheroher" target="_blank">🐦 X (Twitter)</a>
+    <div class="controls">
+      <select id="lang">
+        <option value="en" selected>English</option>
+        <option value="ar">العربية</option>
+        <option value="es">Español</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+      <button id="themeToggle">🌙</button>
     </div>
-  </div>
+  </header>
 
-  <script>
-    const themeBtn = document.getElementById('themeToggle');
-    const langBtn = document.getElementById('langToggle');
-    const body = document.body;
-    let lang = 'en';
+  <main>
+    <section class="intro">
+      <h2 data-en="Official Mods & Tools"
+          data-ar="المودات والأدوات الرسمية"
+          data-es="Mods y herramientas oficiales"
+          data-hi="आधिकारिक मोड्स और टूल्स">Official Mods & Tools</h2>
+      <p data-en="Browse and get exclusive PS2 mods and tools."
+         data-ar="تصفح واحصل على مودات وأدوات حصرية للبلايستيشن 2."
+         data-es="Explora y obtén mods y herramientas exclusivas para PS2."
+         data-hi="PS2 के लिए एक्सक्लूसिव मोड्स और टूल्स ब्राउज़ करें।">
+        Browse and get exclusive PS2 mods and tools.
+      </p>
+    </section>
 
-    themeBtn.onclick = () => {
-      const isDark = body.dataset.theme === 'dark';
-      body.dataset.theme = isDark ? 'light' : 'dark';
-      themeBtn.textContent = isDark ? '🌙' : '☀️';
-    };
+    <section class="products">
+      <h3 data-en="Latest Uploads" data-ar="أحدث الإصدارات" data-es="Últimas subidas" data-hi="नवीनतम अपलोड">Latest Uploads</h3>
+      <div id="product-list">
+        <!-- products injected here -->
+      </div>
+    </section>
+  </main>
 
-    langBtn.onclick = () => {
-      const langs = ['en', 'ar', 'es', 'hi'];
-      lang = langs[(langs.indexOf(lang) + 1) % langs.length];
-      setLanguage(lang);
-    };
+  <a href="https://wa.me/201234567890?text=Hello%20PS2Eater%20Team%2C%20I%20want%20to%20ask%20about%20your%20mods."
+     id="whatsapp" target="_blank" title="Contact on WhatsApp">
+     💬
+  </a>
 
-    function setLanguage(l) {
-      const desc = document.getElementById('desc');
-      if (l === 'ar') desc.textContent = 'الروابط الرسمية وقنوات التواصل';
-      else if (l === 'es') desc.textContent = 'Enlaces oficiales y comunidades';
-      else if (l === 'hi') desc.textContent = 'आधिकारिक लिंक और समुदाय पेज';
-      else desc.textContent = 'Official links and community pages';
-    }
-  </script>
+  <footer>
+    <p>© 2025 PS2 Eater / AmrHero — All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
